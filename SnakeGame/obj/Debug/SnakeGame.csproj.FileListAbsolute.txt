@@ -5,3 +5,10 @@ C:\Users\daniel_t\source\repos\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csproj.Co
 C:\Users\daniel_t\source\repos\SnakeGame\SnakeGame\obj\Debug\SnakeGame.exe
 C:\Users\daniel_t\source\repos\SnakeGame\SnakeGame\obj\Debug\SnakeGame.pdb
 C:\Users\daniel_t\source\repos\SnakeGame\SnakeGame\obj\Debug\SnakeGame.csprojAssemblyReference.cache
+C:\Development\Snake\SnakeGame\obj\Debug\SnakeGame.csprojAssemblyReference.cache
+C:\Development\Snake\SnakeGame\obj\Debug\SnakeGame.csproj.CoreCompileInputs.cache
+C:\Development\Snake\SnakeGame\obj\Debug\SnakeGame.exe
+C:\Development\Snake\SnakeGame\obj\Debug\SnakeGame.pdb
+C:\Development\Snake\SnakeGame\bin\Debug\SnakeGame.exe.config
+C:\Development\Snake\SnakeGame\bin\Debug\SnakeGame.exe
+C:\Development\Snake\SnakeGame\bin\Debug\SnakeGame.pdb

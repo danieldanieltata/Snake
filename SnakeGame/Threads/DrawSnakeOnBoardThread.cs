@@ -1,4 +1,5 @@
-﻿using System.Threading;
+﻿using System.Collections.Generic;
+using System.Threading;
 using SnakeGame.Interfaces;
 
 namespace SnakeGame.Threads
@@ -9,40 +10,42 @@ namespace SnakeGame.Threads
         {
             while (true)
             {
-                for (int i = Snake.Instance.Count - 1; i >= 0; i--)
+                int X = Snake.Instance[0].X;
+                int Y = Snake.Instance[0].Y;
+
+                int oldX = Snake.Instance[Snake.Instance.Count - 1].X;
+                int oldY = Snake.Instance[Snake.Instance.Count - 1].Y;
+
+                switch (Snake.Direction)
                 {
-                    if (i == 0)
-                    {
-                        int X = Snake.Instance[0].X;
-                        int Y = Snake.Instance[0].Y;
-
-                        if (Snake.Instance[0].Y == Board.Instance.BoardArray.GetLength(1)) Snake.Instance[0].Y = 0;
-                        if (Snake.Instance[0].Y < 0) Snake.Instance[0].Y = Board.Instance.BoardArray.GetLength(1) - 1;
-
-                        if (Snake.Instance[0].X == Board.Instance.BoardArray.GetLength(0)) Snake.Instance[0].X = 0;
-                        if (Snake.Instance[0].X < 0) Snake.Instance[0].X = Board.Instance.BoardArray.GetLength(0) - 1;
-
-                        Board.MarkOnBoard(Snake.Instance[0], X, Y);
-                    }
-                    else
-                    {
-                    
-                        Snake currentSnake = Snake.Instance[i];
-                        Snake nextSnake = Snake.Instance[i-1];
-
-                        int oldX = currentSnake.X;
-                        int oldY = currentSnake.Y;
-
-                        currentSnake.X = nextSnake.X;
-                        currentSnake.Y = nextSnake.Y;
-
-                        Board.MarkOnBoard(currentSnake, oldX, oldY);
-                    }
-                
+                    case (int)Enums.SnakeMovment.Up:
+                        X -= 1;
+                        break;
+                    case (int)Enums.SnakeMovment.Down:
+                        X += 1;
+                        break;
+                    case (int)Enums.SnakeMovment.Left:
+                        Y -= 1;
+                        break;
+                    default:
+                        Y += 1;
+                        break;
                 }
 
+                if (Y == Board.Instance.BoardArray.GetLength(1)) Y = 0;
+                if (Y < 0) Y = Board.Instance.BoardArray.GetLength(1) - 1;
+
+                if (X == Board.Instance.BoardArray.GetLength(0)) X = 0;
+                if (X < 0) X = Board.Instance.BoardArray.GetLength(0) - 1;
+
+                Snake.RefreshPositions(X, Y);
+                Board.CheckIfSteppedOnFood(X, Y, oldX, oldY);
+                Board.RefreshBoard(oldX, oldY);
+ 
                 Thread.Sleep(250);
             }
+
+        
         }
     }
 }

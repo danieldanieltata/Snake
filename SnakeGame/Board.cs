@@ -26,16 +26,23 @@ namespace SnakeGame
             }
         }
 
-        public static void MarkOnBoard(Snake newSnake, int oldX, int oldY)
+
+        public static void RefreshBoard(int oldX, int oldY)
         {
-            if (lazy.Value.BoardArray[newSnake.X, newSnake.Y] == 3)
+            foreach (Snake snake in Snake.Instance)
             {
-                Snake.AddSnakeTail(newSnake);
+                lazy.Value.BoardArray[snake.X, snake.Y] = 5;
+            }
+            lazy.Value.BoardArray[oldX, oldY] = 0;
+        }
+        public static void CheckIfSteppedOnFood(int headX, int headY, int oldX, int oldY)
+        {
+            if (lazy.Value.BoardArray[headX, headY] == 3)
+            {                  
+                Snake.AddSnakeTail(oldX, oldY);
                 HaveFood = false;
             }
-
-            lazy.Value.BoardArray[newSnake.X, newSnake.Y] = 5;
-            lazy.Value.BoardArray[oldX, oldY] = 0;
+            
         }
 
         public static Board Instance { get { return lazy.Value; } }

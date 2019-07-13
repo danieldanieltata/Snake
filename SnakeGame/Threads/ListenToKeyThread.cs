@@ -17,16 +17,16 @@ namespace SnakeGame.Threads
                     switch (Console.ReadKey(true).Key)
                     {
                         case ConsoleKey.UpArrow:
-                            snakeHead.Direction = (int)Enums.SnakeMovment.Up;
+                            Snake.Direction = (int)Enums.SnakeMovment.Up;
                             break;
                         case ConsoleKey.DownArrow:
-                            snakeHead.Direction = (int)Enums.SnakeMovment.Down;
+                            Snake.Direction = (int)Enums.SnakeMovment.Down;
                             break;
                         case ConsoleKey.RightArrow:
-                            snakeHead.Direction = (int)Enums.SnakeMovment.Right;
+                            Snake.Direction = (int)Enums.SnakeMovment.Right;
                             break;
                         case ConsoleKey.LeftArrow:
-                            snakeHead.Direction = (int)Enums.SnakeMovment.Left;
+                            Snake.Direction = (int)Enums.SnakeMovment.Left;
                             break;
                         default:
                             break;
